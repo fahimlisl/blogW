@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* smooth experience */
+html {
+  scroll-behavior: smooth;
+}
+.input {
+  @apply w-full bg-[#020617] border border-white/10 rounded-2xl 
+  px-5 py-4 text-sm text-white placeholder-gray-500 
+  outline-none focus:border-emerald-400 
+  focus:ring-2 focus:ring-emerald-400/20 transition;
+}
+

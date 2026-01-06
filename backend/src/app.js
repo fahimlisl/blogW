@@ -6,7 +6,8 @@ import cors from "cors"
 const app = express();
 
 app.use(cors({
-    origin:process.env.CORS_ORIGIN,
+    // origin:process.env.CORS_ORIGIN,
+    origin:"http://localhost:5173",
     credentials:true
 }))
 
@@ -20,8 +21,10 @@ app.use(express.static("public"));
 // routes
 import adminRouter from "./routes/admin.routes.js";
 import userRouter from "./routes/user.routes.js"
+import tafserRouter from "./routes/surah.routes.js"
 
 app.use("/api/v1/admin", adminRouter);
 app.use("/api/v1/user",userRouter)
+app.use("/api/v1/tafser",tafserRouter)
 
 export { app };
