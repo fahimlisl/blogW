@@ -21,10 +21,10 @@ app.use(express.static("public"));
 // routes
 import adminRouter from "./routes/admin.routes.js";
 import userRouter from "./routes/user.routes.js"
-import tafserRouter from "./routes/surah.routes.js"
+import generalRouter from "./routes/general.routes.js"
 
 app.use("/api/v1/admin", adminRouter);
 app.use("/api/v1/user",userRouter)
-app.use("/api/v1/tafser",tafserRouter)
+app.use("/api/v1/general",generalRouter)
 
 export { app };

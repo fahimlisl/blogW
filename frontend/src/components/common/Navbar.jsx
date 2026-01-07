@@ -18,7 +18,8 @@ const Navbar = () => {
     { name: "Tafser", path: "/tafser", icon: FileText },
     { name: "Articles", path: "/articles", icon: BookOpen },
     { name: "Khutba", path: "/khutba", icon: ScrollText },
-    { name: "Surah", path: "/surah", icon: FileText },
+    { name: "Downloads", path: "/downloads", icon: FileText },
+    // { name: "Surah", path: "/surah", icon: FileText },
   ];
 
   return (
@@ -26,7 +27,7 @@ const Navbar = () => {
       <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
         <Link to="/" className="text-xl font-bold text-emerald-400 tracking-wide">
-          نور الهداية
+          تجميع السلفي
         </Link>
 
         <div className="hidden md:flex items-center gap-10 text-sm">

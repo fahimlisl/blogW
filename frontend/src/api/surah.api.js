@@ -1,7 +1,7 @@
-import api from "./axios";
+import api from "./axios.js";
 
 export const getSurahList = () =>
-  api.get("/tafser/fetchSurahList");
+  api.get("/general/tafser/list")
 
 export const getSurahById = (id) =>
-  api.get(`/tafser/fetchSurah/${id}`);
+  api.get(`/general/tafser/${id}`)

@@ -142,6 +142,16 @@ const addShortmeaning = asyncHandler(async(req,res) => {
   .json(new ApiResponse(200,ayah,"upated short Meaning finally"))
 })
 
+
+// for whole surah
+const isPending = asyncHandler(async(req,res) => {
+
+})
+
+const isAyahPending = asyncHandler(async(req,res) => {
+  
+})
+
 export {
   additionOfSurahNamesAndAyats,
   adiddionOfAyahs,

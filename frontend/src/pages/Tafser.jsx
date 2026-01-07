@@ -6,7 +6,7 @@ const Tafser = () => {
   const [selectedSurah, setSelectedSurah] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // fetch surah list
+
   useEffect(() => {
     const fetchList = async () => {
       try {
@@ -19,7 +19,7 @@ const Tafser = () => {
     fetchList();
   }, []);
 
-  // fetch individual surah
+
   const loadSurah = async (id) => {
     setLoading(true);
     try {
@@ -40,8 +40,8 @@ const Tafser = () => {
           Tafsir al-Qur’an
         </h1>
         <p className="text-gray-400 max-w-2xl mx-auto">
-          Ayah-by-ayah explanation based on authentic sources,
-          presented with clarity and reflection.
+          Ayah-by-ayah explanation based on authentic sources, presented with
+          clarity and reflection.
         </p>
       </div>
 
@@ -63,16 +63,14 @@ const Tafser = () => {
                 <span>
                   {s.number}. {s.englishName}
                 </span>
-                <span className="text-gray-500">
-                  {s.numberOfAyahs}
-                </span>
+                <span className="text-gray-500">{s.numberOfAyahs}</span>
               </li>
             ))}
           </ul>
         </aside>
 
-        <main className="lg:col-span-3">
 
+        <main className="lg:col-span-3">
           {!selectedSurah && (
             <div className="text-center text-gray-400 mt-20">
               Select a Surah to begin reading its Tafsir.
@@ -97,29 +95,50 @@ const Tafser = () => {
                 </p>
               </div>
 
+
               <div className="space-y-12">
                 {selectedSurah.ayahs.map((a, idx) => (
                   <div
                     key={idx}
                     className="border border-white/10 rounded-2xl p-6"
                   >
+
+                    <span className="inline-block mb-4 text-xs px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400">
+                      Ayah {idx + 1}
+                    </span>
+
+
                     <p className="text-2xl leading-loose text-right mb-6">
                       {a.ayah}
                     </p>
 
+
                     {a.shortMeaning?.length > 0 && (
                       <ul className="mb-4 text-sm text-gray-300 list-disc pl-5">
                         {a.shortMeaning.map((m, i) => (
-                          <li key={i}>{m}</li>
+                          <li key={i}>
+                            {m}
+                            {i === 0 && (
+                              <span className="ml-1 italic text-gray-500">
+                                — Saheeh International
+                              </span>
+                            )}
+                          </li>
                         ))}
                       </ul>
                     )}
 
-                    {a.explanation && (
+
+                    {a.explanation ? (
                       <p className="text-gray-400 text-sm leading-relaxed">
                         {a.explanation}
                       </p>
+                    ) : (
+                      <p className="text-sm italic text-gray-500">
+                        Tafsir not added yet.
+                      </p>
                     )}
+
 
                     {a.reference && (
                       <p className="mt-4 text-xs text-gray-500 italic">
@@ -129,7 +148,6 @@ const Tafser = () => {
                   </div>
                 ))}
               </div>
-
             </div>
           )}
         </main>

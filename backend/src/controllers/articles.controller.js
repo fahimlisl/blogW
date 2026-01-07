@@ -72,4 +72,45 @@ const removeArticle = asyncHandler(async(req,res) => {
     )
 })
 
-export {registerArticle,editArticle,removeArticle}
+const fetchArticleList = asyncHandler(async(req,res) => {
+    const list = await Article.find({}) // no of article will be counted via fronted logic
+    if(!list) {
+        return res
+        .status(200)
+        .json(
+            new ApiResponse(
+                200,
+                {},
+                "no artcile has been published yet"
+            )
+        )
+    }
+
+    return res
+    .status(200)
+    .json(
+        new ApiResponse(
+            200,
+            list,
+            "articles has been fetched successfully"
+        )
+    )
+})
+
+const fetchArticle = asyncHandler(async(req,res) => {
+    const articleId = req.params.id;
+    const article = await Article.findById(articleId);
+    if(!article) throw new ApiError(400,"article assigned with the particular id wasn't able to found")
+    
+    return res
+    .status(200)
+    .json(
+        new ApiResponse(
+            200,
+            article,
+            `article with the following id ${articleId} fetcehd successfully`
+        )
+    )
+})
+
+export {registerArticle,editArticle,removeArticle,fetchArticleList,fetchArticle}

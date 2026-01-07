@@ -13,7 +13,7 @@ const Footer = () => {
 
           <div>
             <h3 className="text-2xl font-bold text-emerald-400 mb-4">
-              نور الهداية
+              تجميع السلفي
             </h3>
 
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">

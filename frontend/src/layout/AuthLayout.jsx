@@ -10,7 +10,7 @@ const AuthLayout = () => {
         <div className="absolute bottom-0 right-0 w-72 h-72 bg-emerald-400/10 rounded-full blur-2xl" />
 
         <h1 className="text-5xl font-bold leading-tight z-10">
-          Noor-ul-Hidayah
+          Tajammul Salafi
         </h1>
 
         <p className="mt-6 text-gray-400 max-w-md z-10 text-lg">
