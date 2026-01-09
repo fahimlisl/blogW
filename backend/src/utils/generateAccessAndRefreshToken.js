@@ -7,7 +7,6 @@ const generateAccessAndRefreshToken = async(userId,Model) => {
   const accessToken = user.generateAccessToken();
   const refreshToken = user.generateRefreshToken();
 
-  console.log(refreshToken);
   
   await Model.findByIdAndUpdate(user._id,
     {

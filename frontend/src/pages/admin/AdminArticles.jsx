@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {
   fetchAdminArticles,
   deleteArticle,
-} from "../../api/adminArticle.api";
+} from "../../api/adminArticle.api.js";
 
 const AdminArticles = () => {
   const [articles, setArticles] = useState([]);

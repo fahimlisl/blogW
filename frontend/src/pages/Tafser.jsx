@@ -55,16 +55,29 @@ const Tafser = () => {
           <ul className="space-y-2 max-h-[70vh] overflow-y-auto pr-2">
             {surahList.map((s) => (
               <li
-                key={s._id}
-                onClick={() => loadSurah(s._id)}
-                className="cursor-pointer rounded-lg px-3 py-2 text-sm
-                hover:bg-white/5 transition flex justify-between"
-              >
-                <span>
-                  {s.number}. {s.englishName}
-                </span>
-                <span className="text-gray-500">{s.numberOfAyahs}</span>
-              </li>
+  key={s._id}
+  onClick={() => loadSurah(s._id)}
+  className="relative cursor-pointer rounded-lg px-3 py-2 text-sm
+  hover:bg-white/5 transition flex justify-between items-center"
+>
+ 
+  {!s.isCompleted && (
+    <span className="absolute left-0 top-0 h-full w-1 bg-red-500 rounded-l-lg" />
+  )}
+
+  <span className={`${!s.isCompleted ? "text-red-300" : ""}`}>
+    {s.number}. {s.englishName}
+  </span>
+
+  {s.isCompleted ? (
+    <span className="text-xs text-green-400">✓</span>
+  ) : (
+    // <span className="text-xs text-red-400">Incomplete</span>
+    <span className="w-2 h-2 rounded-full bg-red-500 mr-2" />
+
+  )}
+</li>
+
             ))}
           </ul>
         </aside>

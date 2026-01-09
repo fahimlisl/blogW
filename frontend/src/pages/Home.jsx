@@ -4,20 +4,19 @@ const Home = () => {
   return (
     <>
       <section className="relative overflow-hidden">
-        {/* Background Glow */}
         <div
           className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] 
         bg-emerald-500/20 blur-[120px] rounded-full"
         />
 
-        {/* Content */}
+
         <div className="relative max-w-7xl mx-auto px-6 pt-40 pb-32 text-center">
-          {/* Ayah / Message */}
+
           <p className="text-emerald-400 text-sm md:text-base tracking-wide mb-6">
             وَقُل رَّبِّ زِدْنِي عِلْمًا
           </p>
 
-          {/* Main Heading */}
+
           <h1 className="text-4xl md:text-6xl xl:text-7xl font-bold leading-tight">
             A Place for
             <span className="block text-emerald-400 mt-2">
@@ -25,14 +24,14 @@ const Home = () => {
             </span>
           </h1>
 
-          {/* Description */}
+
           <p className="mt-8 max-w-2xl mx-auto text-gray-400 text-base md:text-lg leading-relaxed">
             Explore well-researched articles, powerful khutbas, and carefully
             curated resources rooted in the Qur’an and Sunnah — shared with
             sincerity and clarity.
           </p>
 
-          {/* CTAs */}
+
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/articles"
@@ -47,7 +46,7 @@ const Home = () => {
               className="px-8 py-4 rounded-full border border-white/20 
               hover:bg-white/5 transition font-medium text-lg"
             >
-              Listen to Khutbas
+              Learn to Khutbas
             </Link>
           </div>
         </div>

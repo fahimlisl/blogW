@@ -10,3 +10,8 @@ export const userSignup = (data) =>
 
 export const adminLogin = (data) =>
   api.post("/admin/login", data);
+
+
+export const adminLogout = () => {
+  return api.post("/admin/logout");
+};

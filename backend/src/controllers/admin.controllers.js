@@ -4,6 +4,9 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/AsyncHandler.js";
 import { generateAccessAndRefreshToken } from "../utils/generateAccessAndRefreshToken.js";
 import { options } from "../utils/options.js";
+import { Article } from "../models/articles.models.js"
+import { Khutba } from "../models/khutba.models.js"
+import { Surah } from "../models/surah.models.js"
 
 const registerAdmin = asyncHandler(async (req, res) => {
   const { username, phoneNumber, password, email } = req.body;
@@ -63,7 +66,7 @@ const loginAdmin = asyncHandler(async (req, res) => {
 });
 
 
-// complication need in logout router
+
 const logOutUser = asyncHandler(async (req, res) => {
   const userId = req.user._id;
   const users = await Admin.findByIdAndUpdate(
@@ -86,5 +89,25 @@ const logOutUser = asyncHandler(async (req, res) => {
 });
 
 
+const calcualteNo = asyncHandler(async(req,res) => {
+  const noOfArticle = await Article.countDocuments();
+  const noOfKhutba = await Khutba.countDocuments();
+  const noOfSurahCompleted = await Surah.countDocuments({
+    isCompleted:true
+  });
+  console.log(`no of Article Completed : ${noOfArticle} ; no of khutba completed : ${noOfKhutba} ; no of Surah Completed : ${noOfSurahCompleted}`);
 
-export { registerAdmin, loginAdmin, logOutUser };
+  return res
+  .status(200)
+  .json(
+    new ApiResponse(
+      200,
+      {data:[ noOfArticle , noOfKhutba , noOfSurahCompleted]},
+      "successfully calcaulted no of counts"
+    )
+  )
+  
+})
+
+
+export { registerAdmin, loginAdmin, logOutUser , calcualteNo };

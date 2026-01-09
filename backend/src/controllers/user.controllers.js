@@ -59,7 +59,7 @@ const registerUser = asyncHandler(async(req,res) => {
 
 const loginUser = asyncHandler(async(req,res) => {
     const {email,phoneNumber,password} = req.body;
-    console.log(!(email || phoneNumber))
+
     if(!(email || phoneNumber)) throw new ApiError(400,"atleast one field is required")
     if(!password) throw new ApiError(400,"password must required")
 
@@ -90,7 +90,7 @@ const loginUser = asyncHandler(async(req,res) => {
 
 const logOutUser = asyncHandler(async(req,res) => {
     const userId = req.user._id;
-    console.log(`gettign log of userId from middleware ${userId}`);
+
     const user = await User.findByIdAndUpdate(
         userId,
         {

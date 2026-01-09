@@ -143,14 +143,93 @@ const addShortmeaning = asyncHandler(async(req,res) => {
 })
 
 
-// for whole surah
-const isPending = asyncHandler(async(req,res) => {
+// for whole surah, completion edit
+// const isPending = asyncHandler(async(req,res) => {
+//   const surahId = req.params.id
+//   const surah = await Surah.findById(surahId);
 
+//   let arr = [];
+//   surah.ayahs.forEach((t) => {
+//     arr.push(t.explanation?.trim().length);
+//   })
+//   let findingZero = arr.find((t) => t === 0)
+//   if(findingZero === undefined){
+//   const s = await Surah.findByIdAndUpdate(surahId,
+//     {
+//       $set:{
+//         isCompleted:true
+//       },
+//     },
+//     {
+//       new:true
+//     }
+//   )
+
+//   if(!s) throw new ApiError(400, "had some error in line 178")
+//   return res
+//   .status(200)
+//   .json(
+//     new ApiResponse(
+//       200,
+//       {},
+//       "updated that field successflly"
+//     )
+//   )
+
+//   }if(findingZero === 0){
+//     return res
+//     .status(400)
+//     .json(
+//       new ApiResponse(400,
+//       {},
+//       "ain't able to submit final completiation cuz , all ayahs are not completed yet individually")
+//     )
+//   }
+// })
+
+const isPending = asyncHandler(async (req, res) => {
+  const surahId = req.params.id;
+  const surah = await Surah.findById(surahId);
+
+  if (!surah) throw new ApiError(404, "Surah not found");
+
+  const incompleteAyah = surah.ayahs.find(
+    (a) => !a.explanation?.trim() || a.shortMeaning.length === 0
+  );
+
+  if (incompleteAyah) {
+    throw new ApiError(
+      400,
+      "All ayahs must have explanation and short meaning"
+    );
+  }
+
+  surah.isCompleted = true;
+  await surah.save();
+
+  return res.status(200).json(
+    new ApiResponse(200, {}, "Surah marked as completed")
+  );
+});
+
+
+const additionofIsCompleted = asyncHandler(async(req,res) => {
+  await Surah.updateMany(
+    {isCompleted:{$exists:false}},
+    {$set:{isCompleted:false}}
+  )
+
+  return res
+  .status(200)
+  .json(
+    new ApiResponse(
+      200,
+      {},
+      "updated successfuylly the isCompleted field"
+    )
+  )
 })
 
-const isAyahPending = asyncHandler(async(req,res) => {
-  
-})
 
 export {
   additionOfSurahNamesAndAyats,
@@ -158,5 +237,7 @@ export {
   editExplanationAyah,
   fetchSurah,
   fetchSurahList,
-  addShortmeaning
+  addShortmeaning,
+  additionofIsCompleted,
+  isPending
 };

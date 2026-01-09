@@ -11,3 +11,6 @@ export const updateExplanation = (ayahId, explanation) =>
 
 export const addShortMeaning = (ayahId, shortMeaning) =>
   api.patch(`/admin/addshortMeaning/${ayahId}`, { shortMeaning });
+
+export const markSurahCompleted = (id) =>
+  api.patch(`/admin/isPending/${id}`);

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {
   fetchAdminKhutbas,
   deleteKhutba,
-} from "../../api/adminKhutba.api";
+} from "../../api/adminKhutba.api.js";
 
 const AdminKhutba = () => {
   const [khutbas, setKhutbas] = useState([]);

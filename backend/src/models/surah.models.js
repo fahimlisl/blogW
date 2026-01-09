@@ -32,6 +32,10 @@ const surahSema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref:"SurahList",
         index:true
+    },
+    isCompleted:{
+        type:Boolean,
+        default:false
     }
 },{timestamps:true})
 

@@ -20,6 +20,8 @@ import AdminArticleForm from "../pages/admin/AdminArticleForm.jsx";
 import AdminKhutba from "../pages/admin/AdminKhutba.jsx";
 import AdminKhutbaForm from "../pages/admin/AdminKhutbaForm.jsx";
 import AdminTafser from "../pages/admin/AdminTafser.jsx";
+import Download from "../pages/Download.jsx";
+import Contact from "../pages/Contact.jsx";
 
 const AppRoutes = () => {
   return (
@@ -30,6 +32,8 @@ const AppRoutes = () => {
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:id" element={<ArticleDetails />} />
         <Route path="/khutba" element={<Khutba />} />
+        <Route path="/downloads" element={<Download />} />
+        <Route path="/contact" element={<Contact />} />
       </Route>
 
       <Route element={<AuthLayout />}>
