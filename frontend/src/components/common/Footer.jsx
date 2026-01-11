@@ -33,61 +33,49 @@ const Footer = () => {
 
             <ul className="space-y-3 text-sm text-gray-400">
               <li>
-                <Link
-                  to="/articles"
-                  className="hover:text-emerald-400 transition"
-                >
+                <Link to="/articles" className="hover:text-emerald-400 transition">
                   Articles
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/khutba"
-                  className="hover:text-emerald-400 transition"
-                >
+                <Link to="/khutba" className="hover:text-emerald-400 transition">
                   Khutbas
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/contact"
-                  className="hover:text-emerald-400 transition"
-                >
+                <Link to="/contact" className="hover:text-emerald-400 transition">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/downloads"
-                  className="hover:text-emerald-400 transition"
-                >
+                <Link to="/downloads" className="hover:text-emerald-400 transition">
                   Downloads
                 </Link>
               </li>
             </ul>
 
-            <div className="mt-6">
+            <div className="mt-8">
               <h5 className="text-xs font-semibold text-white mb-3 tracking-wide">
                 Connect
               </h5>
 
-              <div className="flex items-center gap-4 text-sm">
+              <div className="flex items-center gap-4">
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/mdtuzzammel.haq"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-gray-400 hover:text-emerald-400 transition"
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg
+                  border border-white/10 text-gray-400
+                  hover:text-emerald-400 hover:border-emerald-400/40
+                  transition"
                 >
-                  <span className="px-1 py-0.5 rounded-full  bg-blue-800 border border-white/10">
-                   <a href="https://www.facebook.com/mdtuzzammel.haq?rdid=P1vDhVZkFQGeWZsX&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1JzZEhHUWU%2F#"><Facebook /></a>
-                  </span>
-                  
+                  <Facebook size={18} />
+                  <span className="text-sm">Facebook</span>
                 </a>
 
-
-                <span className="flex items-center gap-2 text-gray-500 cursor-not-allowed">
-                  <span className="text-lg">▶️</span>
-                  YouTube (soon)
+                <span className="flex items-center gap-2 px-3 py-2 rounded-lg
+                  border border-white/10 text-gray-500 cursor-not-allowed">
+                  <span className="text-sm">YouTube (soon)</span>
                 </span>
               </div>
             </div>
@@ -108,12 +96,24 @@ const Footer = () => {
           </div>
         </div>
 
-
         <div className="mt-16 border-t border-white/10" />
 
         <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+
           <span>
-            © {new Date().getFullYear()} Noor-ul-Hidayah. All rights reserved.
+            © {new Date().getFullYear()} Tajammul Hoque Salafi. All rights reserved.
+          </span>
+
+          <span className="flex items-center gap-1">
+            Developed & maintained by
+            <a
+              href="https://fahim.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-emerald-400 hover:underline ml-1"
+            >
+              Fahim Abdullah
+            </a>
           </span>
 
           <span className="italic">

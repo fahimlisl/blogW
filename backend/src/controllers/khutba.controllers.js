@@ -4,22 +4,15 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/AsyncHandler.js";
 
 const khutbaRegister = asyncHandler(async (req, res) => {
-  // const { title, description, sources } = req.body;
-  // if (!(title && description))
-  //   throw new ApiError(400, "title and description fields are must required");
 
   const {title,url} = req.body;
   if(!(title && url)) throw new ApiError(400,"title and url must required");
-  // trying to procded with this method , cuz this will enhance admin experinece
-  const count = await Khutba.find({}).countDocuments();
+  
 
   const khutba = await Khutba.create({
     title,
-    // description,
     url,
-    // dateOfRelease, // no need to save date of release , cuz ill be using that from frnted , for the reflection and the impletion via createdAt and updatedAt
-    count:(count+1),
-    // sources: sources || "",
+    likeC:0,
   });
 
   if (!khutba)
@@ -42,8 +35,6 @@ const editKhutba = asyncHandler(async (req, res) => {
     $set: {
       title,
       url
-      // description, // will be using thing kinda thing if this gives a valid error for auto resent the value to null "description : description || khutbaagain.description , (will be needing to have 2 api call)
-      // sources,
     },
   });
   if (!khutba)
@@ -91,4 +82,30 @@ const fetchKhutba = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, khubta, "khubta fetched successfully"));
 });
 
-export { khutbaRegister, editKhutba, removeKhutba ,fetchKhutbaList,fetchKhutba};
+const increaseViewCount = asyncHandler(async(req,res) => {
+  const khubtaId = req.params.id;
+  const khubta = await Khutba.findByIdAndUpdate(khubtaId,
+    {
+      $inc:{
+        viewC :1
+      }
+    },
+    {
+      new:true
+    }
+  );
+
+  if(!khubta) throw new ApiError(500,"internal server error , while incrementing the view count");
+
+  return res
+  .status(200)
+  .json(
+    new ApiResponse(
+      200,
+      khubta,
+      "view count incremented successfully"
+    )
+  )
+})
+
+export { khutbaRegister, editKhutba, removeKhutba ,fetchKhutbaList,fetchKhutba ,increaseViewCount};
