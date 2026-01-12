@@ -6,7 +6,6 @@ const ayahSchema = new mongoose.Schema({
         type:String,
         // required:true // after testing make it required as true
     },
-    // (1:1) // thing need to generate , will figure out wheather will make it happen via fronend or can be complted via backend logic
     shortMeaning:[ // there will be muitple objects bengali , english will depened
         {
             type:String,

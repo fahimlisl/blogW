@@ -3,7 +3,7 @@ import { calcualteNo, loginAdmin, logOutUser, registerAdmin } from "../controlle
 import { verifyJWT } from "../middlewares/auth.middlewares.js";
 import { editArticle, fetchArticle, fetchArticleList, registerArticle, removeArticle } from "../controllers/articles.controller.js";
 import { editKhutba, fetchKhutba, fetchKhutbaList, khutbaRegister, removeKhutba } from "../controllers/khutba.controllers.js";
-import { additionofIsCompleted, additionOfSurahNamesAndAyats, addShortmeaning, adiddionOfAyahs, editExplanationAyah, fetchSurah, fetchSurahList, isPending } from "../controllers/surah.controllers.js";
+import { additionofIsCompleted, additionOfSurahNamesAndAyats, addShortmeaning, adiddionOfAyahs, editExplanationAyah, editShortMeaning, fetchSurah, fetchSurahList, isPending } from "../controllers/surah.controllers.js";
 
 
 
@@ -45,6 +45,8 @@ router.route("/addshortMeaning/:id").patch(verifyJWT,addShortmeaning)
 
 router.route("/fetchTafserList").get(verifyJWT,fetchSurahList)
 router.route("/fetchTafser/:id").get(verifyJWT,fetchSurah)
+
+router.route("/editShortmeaning/:id").patch(verifyJWT,editShortMeaning)
 
 
 // diff route

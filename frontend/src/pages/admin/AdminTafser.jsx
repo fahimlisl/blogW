@@ -4,13 +4,13 @@ import {
   fetchSurah,
   updateExplanation,
   addShortMeaning,
-  markSurahCompleted
+  editShortMeaning,
+  markSurahCompleted,
 } from "../../api/adminTafser.api";
 
 const AdminTafser = () => {
   const [surahList, setSurahList] = useState([]);
   const [filteredSurahs, setFilteredSurahs] = useState([]);
-
   const [search, setSearch] = useState("");
 
   const [selectedSurahId, setSelectedSurahId] = useState("");
@@ -21,10 +21,10 @@ const AdminTafser = () => {
   const [explanationText, setExplanationText] = useState("");
 
   const [shortMeaningMap, setShortMeaningMap] = useState({});
+  const [editingShort, setEditingShort] = useState({ ayahId: null, index: null });
+  const [editShortText, setEditShortText] = useState("");
 
-  // for ayah search like 2:255
   const [searchAyah, setSearchAyah] = useState(null);
-
 
   useEffect(() => {
     const load = async () => {
@@ -35,14 +35,12 @@ const AdminTafser = () => {
     load();
   }, []);
 
-
   useEffect(() => {
     if (!search.trim()) {
       setFilteredSurahs(surahList);
       return;
     }
 
-    // if format is like 2:255
     if (search.includes(":")) {
       const [surahNo, ayahNo] = search.split(":");
       const surahObj = surahList.find(
@@ -55,13 +53,12 @@ const AdminTafser = () => {
       return;
     }
 
-    // normal surah search
     const q = search.toLowerCase();
     setFilteredSurahs(
       surahList.filter(
         (s) =>
-          s.englishName.toLowerCase().includes(q) ||
-          String(s.number).includes(q)
+          s.englishName.toLowerCase().startsWith(q) ||
+          String(s.number).startsWith(q)
       )
     );
   }, [search, surahList]);
@@ -72,26 +69,15 @@ const AdminTafser = () => {
     try {
       const res = await fetchSurah(id);
       setSurah(res.data.data);
-
-      if (ayahNumber) {
-        setSearchAyah(ayahNumber);
-      } else {
-        setSearchAyah(null);
-      }
-
+      setSearchAyah(ayahNumber || null);
       window.scrollTo({ top: 0, behavior: "smooth" });
-    } catch {
-      alert("Failed to load surah");
     } finally {
       setLoading(false);
     }
   };
 
   const saveExplanation = async (ayahId) => {
-    if (!explanationText.trim()) {
-      alert("Explanation is required");
-      return;
-    }
+    if (!explanationText.trim()) return alert("Explanation required");
     await updateExplanation(ayahId, explanationText);
     setEditingAyahId(null);
     setExplanationText("");
@@ -103,12 +89,17 @@ const AdminTafser = () => {
     if (!text || !text.trim()) return;
 
     await addShortMeaning(ayahId, text);
+    setShortMeaningMap({ ...shortMeaningMap, [ayahId]: "" });
+    loadSurah(selectedSurahId);
+  };
 
-    setShortMeaningMap((prev) => ({
-      ...prev,
-      [ayahId]: "",
-    }));
+  const saveEditShortMeaning = async () => {
+    if (!editShortText.trim()) return;
 
+    await editShortMeaning(editingShort.ayahId, editingShort.index, editShortText);
+
+    setEditingShort({ ayahId: null, index: null });
+    setEditShortText("");
     loadSurah(selectedSurahId);
   };
 
@@ -126,7 +117,7 @@ const AdminTafser = () => {
 
       <aside className="w-72 border border-white/10 rounded-2xl p-4 flex flex-col">
         <input
-          placeholder="Search: 2 or 2:255"
+          placeholder="Search: 2, baq, 2:255"
           className="mb-4 bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-sm"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -202,13 +193,8 @@ const AdminTafser = () => {
                   <button
                     disabled={progressPercent !== 100}
                     onClick={async () => {
-                      try {
-                        await markSurahCompleted(surah._id);
-                        alert("Surah marked as completed");
-                        loadSurah(selectedSurahId);
-                      } catch {
-                        alert("All ayahs must be completed first");
-                      }
+                      await markSurahCompleted(surah._id);
+                      loadSurah(selectedSurahId);
                     }}
                     className={`px-6 py-2 rounded-xl text-sm font-medium transition
                     ${
@@ -223,14 +209,11 @@ const AdminTafser = () => {
               )}
             </div>
 
-
             <div className="space-y-14">
               {surah.ayahs
-                .filter((_, i) =>
-                  searchAyah ? i + 1 === searchAyah : true
-                )
+                .filter((_, i) => (searchAyah ? i + 1 === searchAyah : true))
                 .map((a, index) => {
-                  const realIndex = searchAyah ? searchAyah : index + 1;
+                  const ayahNo = searchAyah || index + 1;
 
                   return (
                     <div
@@ -238,32 +221,61 @@ const AdminTafser = () => {
                       className="border border-white/10 rounded-2xl p-6"
                     >
                       <span className="text-xs px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400">
-                        Ayah {realIndex}
+                        Ayah {ayahNo}
                       </span>
 
-                      <p className="text-2xl text-right leading-loose mb-6 mt-4">
+                      <p className="text-2xl text-right leading-loose my-6">
                         {a.ayah}
                       </p>
 
                       {a.shortMeaning?.length > 0 && (
-                        <ul className="list-disc pl-5 text-sm text-gray-300 mb-4">
+                        <ul className="space-y-2 mb-4">
                           {a.shortMeaning.map((m, i) => (
-                            <li key={i}>
-                              {m}
-                              {i === 0 && (
-                                <span className="ml-1 italic text-gray-500">
-                                  — Saheeh International
-                                </span>
+                            <li key={i} className="flex items-center gap-3">
+                              {editingShort.ayahId === a._id &&
+                              editingShort.index === i ? (
+                                <>
+                                  <input
+                                    value={editShortText}
+                                    onChange={(e) =>
+                                      setEditShortText(e.target.value)
+                                    }
+                                    className="flex-1 bg-black/40 border border-white/10 rounded-lg px-3 py-1"
+                                  />
+                                  <button
+                                    onClick={saveEditShortMeaning}
+                                    className="px-3 py-1 bg-emerald-500 rounded"
+                                  >
+                                    Save
+                                  </button>
+                                </>
+                              ) : (
+                                <>
+                                  <span className="flex-1 text-sm text-gray-300">
+                                    {m}
+                                    {i === 0 && (
+                                      <span className="ml-1 italic text-gray-500">
+                                        — Saheeh International
+                                      </span>
+                                    )}
+                                  </span>
+                                  <button
+                                    onClick={() => {
+                                      setEditingShort({
+                                        ayahId: a._id,
+                                        index: i,
+                                      });
+                                      setEditShortText(m);
+                                    }}
+                                    className="text-xs px-2 py-1 border border-white/20 rounded"
+                                  >
+                                    Edit
+                                  </button>
+                                </>
                               )}
                             </li>
                           ))}
                         </ul>
-                      )}
-
-                      {a.explanation && (
-                        <p className="text-sm text-gray-400 mb-4">
-                          {a.explanation}
-                        </p>
                       )}
 
                       {editingAyahId === a._id ? (
@@ -274,34 +286,33 @@ const AdminTafser = () => {
                             value={explanationText}
                             onChange={(e) => setExplanationText(e.target.value)}
                           />
-                          <div className="flex gap-3">
-                            <button
-                              onClick={() => saveExplanation(a._id)}
-                              className="px-4 py-2 rounded bg-emerald-500"
-                            >
-                              Save
-                            </button>
-                            <button
-                              onClick={() => setEditingAyahId(null)}
-                              className="px-4 py-2 rounded border border-white/20"
-                            >
-                              Cancel
-                            </button>
-                          </div>
+                          <button
+                            onClick={() => saveExplanation(a._id)}
+                            className="px-4 py-2 rounded bg-emerald-500"
+                          >
+                            Save Explanation
+                          </button>
                         </>
                       ) : (
-                        <button
-                          onClick={() => {
-                            setEditingAyahId(a._id);
-                            setExplanationText(a.explanation || "");
-                          }}
-                          className="text-sm px-4 py-2 rounded border border-white/20 hover:bg-white/5 mb-4"
-                        >
-                          Edit Explanation
-                        </button>
+                        <>
+                          {a.explanation && (
+                            <p className="text-sm text-gray-400 mb-3">
+                              {a.explanation}
+                            </p>
+                          )}
+                          <button
+                            onClick={() => {
+                              setEditingAyahId(a._id);
+                              setExplanationText(a.explanation || "");
+                            }}
+                            className="text-sm px-4 py-2 rounded border border-white/20 hover:bg-white/5"
+                          >
+                            Edit Explanation
+                          </button>
+                        </>
                       )}
 
-                      <div className="flex gap-3 mt-4">
+                      <div className="flex gap-3 mt-6">
                         <input
                           className="flex-1 bg-black/40 border border-white/10 rounded-xl px-4 py-2"
                           placeholder="Add short meaning"

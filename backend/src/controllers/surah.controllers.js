@@ -230,6 +230,40 @@ const additionofIsCompleted = asyncHandler(async(req,res) => {
   )
 })
 
+const editShortMeaning = asyncHandler(async(req,res) => {
+  const ayahId = req.params.id;
+  const {index,shortMeaning} = req.body;
+
+   if (!shortMeaning || !shortMeaning.trim()) {
+    throw new ApiError(400, "shortMeaning is required");
+  }
+  const s = await Surah.findOneAndUpdate(
+    {
+      "ayahs._id":ayahId
+    },
+    {
+      $set:{
+        // "ayahs.$.shortMeaning" : [shortMeaning]
+        [`ayahs.$.shortMeaning.${index}`]: shortMeaning.trim()
+      }
+    },
+    {
+      new:true
+    }
+  )
+  if(!s) throw new ApiError(400,"wasn't abel to edit the short meaning")
+
+  return res
+  .status(200)
+  .json(
+    new ApiResponse(
+      200,
+      s,
+      "updated successfully"
+    )
+  )
+})
+
 
 export {
   additionOfSurahNamesAndAyats,
@@ -239,5 +273,6 @@ export {
   fetchSurahList,
   addShortmeaning,
   additionofIsCompleted,
-  isPending
+  isPending,
+  editShortMeaning
 };

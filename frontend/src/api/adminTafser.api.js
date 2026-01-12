@@ -14,3 +14,9 @@ export const addShortMeaning = (ayahId, shortMeaning) =>
 
 export const markSurahCompleted = (id) =>
   api.patch(`/admin/isPending/${id}`);
+
+export const editShortMeaning = (ayahId, index, shortMeaning) =>
+  api.patch(`/admin/editShortmeaning/${ayahId}`, {
+    index,
+    shortMeaning,
+  });
