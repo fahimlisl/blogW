@@ -22,6 +22,7 @@ import AdminKhutbaForm from "../pages/admin/AdminKhutbaForm.jsx";
 import AdminTafser from "../pages/admin/AdminTafser.jsx";
 import Download from "../pages/Download.jsx";
 import Contact from "../pages/Contact.jsx";
+import Guides from "../pages/Guides.jsx";
 
 const AppRoutes = () => {
   return (
@@ -34,6 +35,7 @@ const AppRoutes = () => {
         <Route path="/khutba" element={<Khutba />} />
         <Route path="/downloads" element={<Download />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/guides" element={<Guides />} />
       </Route>
 
       <Route element={<AuthLayout />}>
