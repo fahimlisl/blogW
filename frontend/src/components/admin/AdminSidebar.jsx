@@ -76,7 +76,7 @@ const AdminSidebar = () => {
             }`
           }
         >
-          Tafser
+          Quran
         </NavLink>
         <NavLink
           to="/admin/anjuman"
