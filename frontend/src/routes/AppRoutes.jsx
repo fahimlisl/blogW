@@ -23,6 +23,9 @@ import AdminTafser from "../pages/admin/AdminTafser.jsx";
 import Download from "../pages/Download.jsx";
 import Contact from "../pages/Contact.jsx";
 import Guides from "../pages/Guides.jsx";
+import Anjuman from "../pages/Anjuman.jsx";
+import AdminAnjuman from "../pages/admin/AdminAnjuman.jsx";
+import AdminAnjumanForm from "../pages/admin/AdminAnjumanForm.jsx";
 
 const AppRoutes = () => {
   return (
@@ -36,6 +39,7 @@ const AppRoutes = () => {
         <Route path="/downloads" element={<Download />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/guides" element={<Guides />} />
+        <Route path="/anjuman" element={<Anjuman />} />
       </Route>
 
       <Route element={<AuthLayout />}>
@@ -57,6 +61,9 @@ const AppRoutes = () => {
 
         <Route path="/admin/tafser" element={<AdminTafser />} />
 
+        <Route path="/admin/anjuman" element={<AdminAnjuman />} />
+        <Route path="/admin/anjuman/new" element={<AdminAnjumanForm />} />
+        <Route path="/admin/anjuman/edit/:id" element={<AdminAnjumanForm />} />
       </Route>
     </Routes>
   );

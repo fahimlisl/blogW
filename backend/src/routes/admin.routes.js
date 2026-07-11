@@ -4,6 +4,7 @@ import { verifyJWT } from "../middlewares/auth.middlewares.js";
 import { editArticle, fetchArticle, fetchArticleList, registerArticle, removeArticle } from "../controllers/articles.controller.js";
 import { editKhutba, fetchKhutba, fetchKhutbaList, khutbaRegister, removeKhutba } from "../controllers/khutba.controllers.js";
 import { additionofIsCompleted, additionOfSurahNamesAndAyats, addShortmeaning, adiddionOfAyahs, editExplanationAyah, editShortMeaning, fetchSurah, fetchSurahList, isPending } from "../controllers/surah.controllers.js";
+import { anjumanRegister, editAnjuman, fetchAnjuman, fetchAnjumanList, removeAnjuman } from "../controllers/anjuman.controllers.js";
 
 
 
@@ -31,6 +32,16 @@ router.route("/removeKhutba/:id").delete(verifyJWT,removeKhutba)
 
 router.route("/fetchKhutba/list").get(verifyJWT,fetchKhutbaList)
 router.route("/fetchKhutba/:id").get(verifyJWT,fetchKhutba)
+router.route("/addKhutba").post(verifyJWT,khutbaRegister)
+
+
+// anjuman routes
+router.route("/addAnjuman").post(verifyJWT,anjumanRegister)
+router.route("/editAnjuman/:id").patch(verifyJWT,editAnjuman)
+router.route("/removeAnjuman/:id").delete(verifyJWT,removeAnjuman)
+
+router.route("/fetchAnjuman/list").get(verifyJWT,fetchAnjumanList)
+router.route("/fetchAnjuman/:id").get(verifyJWT,fetchAnjuman)
 
 // temporary routes (call once)
 router.route("/addSamples").get(verifyJWT,additionOfSurahNamesAndAyats)

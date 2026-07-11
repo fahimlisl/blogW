@@ -9,7 +9,8 @@ import {
   LogIn,
   Shield,
   Download,
-  Signpost
+  Signpost,
+  NotepadText
 } from "lucide-react";
 
 const Navbar = () => {
@@ -23,6 +24,7 @@ const Navbar = () => {
     { name: "যোগাযোগ", path: "/contact", icon: FileText },
     { name: "ডাউনলোড", path: "/downloads", icon: Download },
     { name: "নির্দেশিকা", path: "/guides", icon: Signpost },
+    { name: "আঞ্জমান", path: "/anjuman", icon: NotepadText },
   ];
 
   return (

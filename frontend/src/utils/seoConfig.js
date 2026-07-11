@@ -13,6 +13,13 @@ export const seoConfig = {
     ogImage: "https://tajammulsalafiofficial.in/logo.png",
     canonical: "https://tajammulsalafiofficial.in/tafsir",
   },
+    anjuman: {
+    title: "Anjuman by Tajammul Hoque Salafi - Islamic Gatherings & Sessions",
+    description: "Explore Anjuman sessions and gatherings led by Tajammul Hoque Salafi. Islamic guidance, reminders, and community learning rooted in Quran and Sunnah.",
+    keywords: "anjuman, Islamic gathering, Islamic session, Tajammul Hoque, salafi, tuzzammel",
+    ogImage: "https://tajammulsalafiofficial.in/logo.png",
+    canonical: "https://tajammulsalafiofficial.in/anjuman",
+  },
   khutba: {
     title: "Islamic Khutbas (Sermons) by Tajammul Hoque - Weekly Friday Sermons",
     description: "Listen to inspiring Islamic Khutbas and Friday sermons by Tajammul Hoque Salafi. Guidance on Islamic living and spirituality.",

@@ -2,6 +2,7 @@ import {Router} from "express"
 import { fetchArticle, fetchArticleList } from "../controllers/articles.controller.js";
 import { fetchSurah, fetchSurahList } from "../controllers/surah.controllers.js";
 import { fetchKhutbaList ,fetchKhutba, increaseViewCount } from "../controllers/khutba.controllers.js"
+import { fetchAnjumanList, increaseViewCountAnjuman } from "../controllers/anjuman.controllers.js";
 
 const router = Router();
 // article
@@ -22,5 +23,11 @@ router.route("/khutba/list").get(fetchKhutbaList) // or will put a button there 
 // increment routes 
 // khutba
 router.route("/viewInKhutba/:id").patch(increaseViewCount)
+
+
+// anjuman routes
+router.route("/anjuman/list").get(fetchAnjumanList) 
+router.route("/viewInAnjuman/:id").patch(increaseViewCountAnjuman)
+
 
 export default router;
