@@ -24,7 +24,7 @@ const Navbar = () => {
     { name: "যোগাযোগ", path: "/contact", icon: FileText },
     { name: "ডাউনলোড", path: "/downloads", icon: Download },
     { name: "নির্দেশিকা", path: "/guides", icon: Signpost },
-    { name: "আঞ্জমান", path: "/anjuman", icon: NotepadText },
+    { name: "আঞ্জুমান", path: "/anjuman", icon: NotepadText },
   ];
 
   return (
