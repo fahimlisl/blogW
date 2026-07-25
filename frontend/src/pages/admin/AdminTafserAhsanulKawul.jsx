@@ -14,7 +14,7 @@ const AdminTafserAhsanulKawul = () => {
       const res = await fetchAdminTafserAhsanulKawulList();
       setTafsirs(res.data.data || []);
     } catch {
-      alert("Failed to load Tafser Ahsanul Kawul");
+      alert("Failed to load Tafser Ahsanul Qaul");
     } finally {
       setLoading(false);
     }
@@ -25,27 +25,27 @@ const AdminTafserAhsanulKawul = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Delete this Tafser Ahsanul Kawul permanently?")) return;
+    if (!window.confirm("Delete this Tafser Ahsanul Qaul permanently?")) return;
     try {
       await deleteTafserAhsanulKawul(id);
       loadTafsirs();
     } catch {
-      alert("Failed to delete Tafser Ahsanul Kawul");
+      alert("Failed to delete Tafser Ahsanul Qaul");
     }
   };
 
   if (loading) {
-    return <p className="text-gray-400">Loading Tafser Ahsanul Kawul...</p>;
+    return <p className="text-gray-400">Loading Tafser Ahsanul Qaul...</p>;
   }
 
   return (
     <div>
 
       <div className="flex items-center justify-between mb-10">
-        <h1 className="text-3xl font-bold">Tafser Ahsanul Kawul</h1>
+        <h1 className="text-3xl font-bold">Tafser Ahsanul Qaul</h1>
 
         <Link
-          to="/admin/tafser-ahsanul-kawul/new"
+          to="/admin/tafser-ahsanul-qaul/new"
           className="px-5 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 transition"
         >
           + Add Tafsir
@@ -53,7 +53,7 @@ const AdminTafserAhsanulKawul = () => {
       </div>
 
       {tafsirs.length === 0 && (
-        <p className="text-gray-400">No Tafser Ahsanul Kawul added yet.</p>
+        <p className="text-gray-400">No Tafser Ahsanul Qaul added yet.</p>
       )}
 
       <div className="space-y-4">
@@ -83,7 +83,7 @@ const AdminTafserAhsanulKawul = () => {
 
             <div className="flex gap-3">
               <Link
-                to={`/admin/tafser-ahsanul-kawul/edit/${t._id}`}
+                to={`/admin/tafser-ahsanul-qaul/edit/${t._id}`}
                 className="px-4 py-1.5 text-sm rounded border border-white/20 hover:bg-white/5 transition"
               >
                 Edit
