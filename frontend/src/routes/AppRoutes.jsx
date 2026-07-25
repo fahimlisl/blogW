@@ -43,7 +43,7 @@ const AppRoutes = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/guides" element={<Guides />} />
         <Route path="/anjuman" element={<Anjuman />} />
-        <Route path="/tafser-ahsanul-kawul" element={<TafserAhsanulKawul />} />
+        <Route path="/tafser-ahsanul-qaul" element={<TafserAhsanulKawul />} />
       </Route>
 
       <Route element={<AuthLayout />}>
@@ -70,9 +70,9 @@ const AppRoutes = () => {
         <Route path="/admin/anjuman/edit/:id" element={<AdminAnjumanForm />} />
 
         // tafser ahsanul kawul
-        <Route path="/admin/tafser-ahsanul-kawul" element={<AdminTafserAhsanulKawul />} />
-        <Route path="/admin/tafser-ahsanul-kawul/new" element={<AdminTafserAhsanulKawulForm />} />
-        <Route path="/admin/tafser-ahsanul-kawul/edit/:id" element={<AdminTafserAhsanulKawulForm />} />
+        <Route path="/admin/tafser-ahsanul-qaul" element={<AdminTafserAhsanulKawul />} />
+        <Route path="/admin/tafser-ahsanul-qaul/new" element={<AdminTafserAhsanulKawulForm />} />
+        <Route path="/admin/tafser-ahsanul-qaul/edit/:id" element={<AdminTafserAhsanulKawulForm />} />
       </Route>
     </Routes>
   );

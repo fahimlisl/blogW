@@ -14,11 +14,11 @@ export const seoConfig = {
     canonical: "https://tajammulsalafiofficial.in/tafsir",
   },
   tafserAhsanulKawul: {
-    title: "Tafser Ahsanul Kawul - Quran Tafsir by Tajammul Hoque Salafi",
-    description: "Explore detailed Tafser Ahsanul Kawul (Quran commentary) by Tajammul Hoque Salafi. Deepen your understanding of Quranic verses with authentic scholarly interpretations.",
-    keywords: "tafser ahsanul kawul, Quran tafsir, Quran commentary, Islamic interpretation, Tajammul Hoque, salafi, tuzzammel",
+    title: "Tafser Ahsanul Qaul - Quran Tafsir by Tajammul Hoque Salafi",
+    description: "Explore detailed Tafser Ahsanul Qaul (Quran commentary) by Tajammul Hoque Salafi. Deepen your understanding of Quranic verses with authentic scholarly interpretations.",
+    keywords: "tafser ahsanul Qaul, Quran tafsir, Quran commentary, Islamic interpretation, Tajammul Hoque, salafi, tuzzammel",
     ogImage: "https://tajammulsalafiofficial.in/logo.png",
-    canonical: "https://tajammulsalafiofficial.in/tafser-ahsanul-kawul",
+    canonical: "https://tajammulsalafiofficial.in/tafser-ahsanul-qaul",
   },
     anjuman: {
     title: "Anjuman by Tajammul Hoque Salafi - Islamic Gatherings & Sessions",

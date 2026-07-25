@@ -12,7 +12,7 @@ const TafserAhsanulKawul = () => {
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "Tafser Ahsanul Kawul by Tajammul Hoque",
+    "name": "Tafser Ahsanul Qaul by Tajammul Hoque",
     "description": config.description,
     "author": {
       "@type": "Person",
@@ -64,7 +64,7 @@ const TafserAhsanulKawul = () => {
       <div className="max-w-5xl mx-auto px-6 py-24">
         <div className="mb-16 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Tafsir Ahsanul Kawul by Tajammul Hoque Salafi
+            Tafsir Ahsanul Qaul by Tajammul Hoque Salafi
           </h1>
           <p className="text-gray-400 max-w-2xl mx-auto">
             Detailed Quranic Tafsir and commentary by Tajammul Hoque. 
@@ -75,13 +75,13 @@ const TafserAhsanulKawul = () => {
 
         {loading && (
           <div className="text-center text-gray-400 py-20">
-            Loading Tafser Ahsanul Kawul…
+            Loading Tafser Ahsanul Qaul…
           </div>
         )}
 
         {!loading && tafsirs.length === 0 && (
           <div className="text-center text-gray-400 py-20">
-            No Tafser Ahsanul Kawul has been published yet. 
+            No Tafser Ahsanul Qaul has been published yet. 
             Check back soon for detailed Quranic commentary!
           </div>
         )}
@@ -150,7 +150,7 @@ const TafserAhsanulKawul = () => {
         {/* FAQ Section for SEO */}
         <section className="mt-24 pt-20 border-t border-white/10">
           <h2 className="text-2xl font-bold mb-12 text-center">
-            About Tafser Ahsanul Kawul
+            About Tafser Ahsanul Qaul
           </h2>
 
           <div itemScope itemType="https://schema.org/FAQPage" className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -164,11 +164,11 @@ const TafserAhsanulKawul = () => {
                 className="font-semibold mb-3 text-emerald-400"
                 itemProp="name"
               >
-                What is Tafser Ahsanul Kawul?
+                What is Tafser Ahsanul Qaul?
               </h3>
               <div itemProp="acceptedAnswer" itemScope itemType="https://schema.org/Answer">
                 <p className="text-gray-400 text-sm" itemProp="text">
-                  Tafser Ahsanul Kawul is a comprehensive Quranic commentary and 
+                  Tafser Ahsanul Qaul is a comprehensive Quranic commentary and 
                   interpretation that provides detailed explanations of Quran verses, 
                   their context, and their application in daily life. It's designed 
                   to help Muslims understand the Quran more deeply.

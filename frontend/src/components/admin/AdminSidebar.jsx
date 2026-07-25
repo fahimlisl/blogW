@@ -91,7 +91,7 @@ const AdminSidebar = () => {
           আঞ্জুমান
         </NavLink>
         <NavLink
-          to="/admin/tafser-ahsanul-kawul"
+          to="/admin/tafser-ahsanul-qaul"
           className={({ isActive }) =>
             `block px-4 py-2 rounded transition ${
               isActive

@@ -20,7 +20,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "কুরআন", path: "/tafser", icon: FileText },
-    { name: "তাফসীর আহসানুল ক্বওল", path: "/tafser-ahsanul-kawul", icon: BookText },
+    { name: "তাফসীর আহসানুল ক্বওল", path: "/tafser-ahsanul-qaul", icon: BookText },
     { name: "প্রবন্ধ", path: "/articles", icon: BookOpen },
     { name: "ইসলামী খুতবাহ", path: "/khutba", icon: ScrollText },
     { name: "যোগাযোগ", path: "/contact", icon: FileText },
