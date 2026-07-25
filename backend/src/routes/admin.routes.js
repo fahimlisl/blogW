@@ -5,6 +5,7 @@ import { editArticle, fetchArticle, fetchArticleList, registerArticle, removeArt
 import { editKhutba, fetchKhutba, fetchKhutbaList, khutbaRegister, removeKhutba } from "../controllers/khutba.controllers.js";
 import { additionofIsCompleted, additionOfSurahNamesAndAyats, addShortmeaning, adiddionOfAyahs, editExplanationAyah, editShortMeaning, fetchSurah, fetchSurahList, isPending } from "../controllers/surah.controllers.js";
 import { anjumanRegister, editAnjuman, fetchAnjuman, fetchAnjumanList, removeAnjuman } from "../controllers/anjuman.controllers.js";
+import { edittafserAhsanulKawul, fetchtafserAhsanulKawul, fetchtafserAhsanulKawulList, removetafserAhsanulKawul, tafserAhsanulKawulRegister } from "../controllers/tafserAhsanulKawul.controllers.js";
 
 
 
@@ -32,7 +33,15 @@ router.route("/removeKhutba/:id").delete(verifyJWT,removeKhutba)
 
 router.route("/fetchKhutba/list").get(verifyJWT,fetchKhutbaList)
 router.route("/fetchKhutba/:id").get(verifyJWT,fetchKhutba)
-router.route("/addKhutba").post(verifyJWT,khutbaRegister)
+
+// tasfserAhsanulKawul
+router.route("/addtafserAhsanulKawul").post(verifyJWT,tafserAhsanulKawulRegister)
+router.route("/edittafserAhsanulKawul/:id").patch(verifyJWT,edittafserAhsanulKawul)
+router.route("/removetafserAhsanulKawul/:id").delete(verifyJWT,removetafserAhsanulKawul)
+
+router.route("/fetchtafserAhsanulKawul/list").get(verifyJWT,fetchtafserAhsanulKawulList)
+router.route("/fetchtafserAhsanulKawul/:id").get(verifyJWT,fetchtafserAhsanulKawul)
+
 
 
 // anjuman routes

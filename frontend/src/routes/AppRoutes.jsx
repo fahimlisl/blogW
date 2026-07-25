@@ -26,6 +26,9 @@ import Guides from "../pages/Guides.jsx";
 import Anjuman from "../pages/Anjuman.jsx";
 import AdminAnjuman from "../pages/admin/AdminAnjuman.jsx";
 import AdminAnjumanForm from "../pages/admin/AdminAnjumanForm.jsx";
+import AdminTafserAhsanulKawul from "../pages/admin/AdminTafserAhsanulKawul.jsx";
+import AdminTafserAhsanulKawulForm from "../pages/admin/AdminTafserAhsanulKawulForm.jsx";
+import TafserAhsanulKawul from "../pages/TafserAhsanulKawul.jsx";
 
 const AppRoutes = () => {
   return (
@@ -40,6 +43,7 @@ const AppRoutes = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/guides" element={<Guides />} />
         <Route path="/anjuman" element={<Anjuman />} />
+        <Route path="/tafser-ahsanul-kawul" element={<TafserAhsanulKawul />} />
       </Route>
 
       <Route element={<AuthLayout />}>
@@ -64,6 +68,11 @@ const AppRoutes = () => {
         <Route path="/admin/anjuman" element={<AdminAnjuman />} />
         <Route path="/admin/anjuman/new" element={<AdminAnjumanForm />} />
         <Route path="/admin/anjuman/edit/:id" element={<AdminAnjumanForm />} />
+
+        // tafser ahsanul kawul
+        <Route path="/admin/tafser-ahsanul-kawul" element={<AdminTafserAhsanulKawul />} />
+        <Route path="/admin/tafser-ahsanul-kawul/new" element={<AdminTafserAhsanulKawulForm />} />
+        <Route path="/admin/tafser-ahsanul-kawul/edit/:id" element={<AdminTafserAhsanulKawulForm />} />
       </Route>
     </Routes>
   );

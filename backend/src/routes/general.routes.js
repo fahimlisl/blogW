@@ -3,6 +3,7 @@ import { fetchArticle, fetchArticleList } from "../controllers/articles.controll
 import { fetchSurah, fetchSurahList } from "../controllers/surah.controllers.js";
 import { fetchKhutbaList ,fetchKhutba, increaseViewCount } from "../controllers/khutba.controllers.js"
 import { fetchAnjumanList, increaseViewCountAnjuman } from "../controllers/anjuman.controllers.js";
+import { fetchtafserAhsanulKawulList, increaseViewCountOfTafserAhasanulKawul } from "../controllers/tafserAhsanulKawul.controllers.js";
 
 const router = Router();
 // article
@@ -29,5 +30,9 @@ router.route("/viewInKhutba/:id").patch(increaseViewCount)
 router.route("/anjuman/list").get(fetchAnjumanList) 
 router.route("/viewInAnjuman/:id").patch(increaseViewCountAnjuman)
 
+
+// tafser ahsanul kawul routes
+router.route("/tafserAhsanulKawul/list").get(fetchtafserAhsanulKawulList)
+router.route("/viewIntafserAhsanulKawul/:id").patch(increaseViewCountOfTafserAhasanulKawul)
 
 export default router;

@@ -37,7 +37,7 @@ const AdminSidebar = () => {
             }`
           }
         >
-          Dashboard
+          ড্যাশবোর্ড
         </NavLink>
 
         <NavLink
@@ -50,7 +50,7 @@ const AdminSidebar = () => {
             }`
           }
         >
-          Articles
+          প্রবন্ধ
         </NavLink>
 
         <NavLink
@@ -63,7 +63,7 @@ const AdminSidebar = () => {
             }`
           }
         >
-          Khutba
+          ইসলামী খুতবাহ
         </NavLink>
 
         <NavLink
@@ -76,7 +76,7 @@ const AdminSidebar = () => {
             }`
           }
         >
-          Quran
+          কুরআন
         </NavLink>
         <NavLink
           to="/admin/anjuman"
@@ -88,7 +88,19 @@ const AdminSidebar = () => {
             }`
           }
         >
-          Anjuman
+          আঞ্জুমান
+        </NavLink>
+        <NavLink
+          to="/admin/tafser-ahsanul-kawul"
+          className={({ isActive }) =>
+            `block px-4 py-2 rounded transition ${
+              isActive
+                ? "bg-emerald-500/20 text-emerald-400"
+                : "hover:bg-white/5"
+            }`
+          }
+        >
+          তাফসীর আহসানুল ক্বওল
         </NavLink>
       </nav>
 
