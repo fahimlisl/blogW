@@ -28,7 +28,7 @@ const AdminTafserAhsanulKawulForm = () => {
           url: res.data.data.url,
         });
       } catch {
-        alert("Failed to load Tafser Ahsanul Kawul");
+        alert("Failed to load Tafser Ahsanul qaul");
       }
     };
 
@@ -45,9 +45,9 @@ const AdminTafserAhsanulKawulForm = () => {
       } else {
         await createTafserAhsanulKawul(form);
       }
-      navigate("/admin/tafser-ahsanul-kawul");
+      navigate("/admin/tafser-ahsanul-qaul");
     } catch {
-      alert("Failed to save Tafser Ahsanul Kawul");
+      alert("Failed to save Tafser Ahsanul qaul");
     } finally {
       setLoading(false);
     }
@@ -56,7 +56,7 @@ const AdminTafserAhsanulKawulForm = () => {
   return (
     <div className="max-w-3xl">
       <h1 className="text-3xl font-bold mb-8">
-        {id ? "Edit Tafser Ahsanul Kawul" : "Add New Tafser Ahsanul Kawul"}
+        {id ? "Edit Tafser Ahsanul qaul" : "Add New Tafser Ahsanul qaul"}
       </h1>
 
       <form onSubmit={submit} className="space-y-6">
@@ -107,7 +107,7 @@ const AdminTafserAhsanulKawulForm = () => {
 
           <button
             type="button"
-            onClick={() => navigate("/admin/tafser-ahsanul-kawul")}
+            onClick={() => navigate("/admin/tafser-ahsanul-qaul")}
             className="px-8 py-3 rounded-xl border border-white/20 hover:bg-white/5"
           >
             Cancel
